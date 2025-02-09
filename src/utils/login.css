@@ -1,6 +1,77 @@
 .login-container {
     width: 100%;
     height: 100vh;
+    position: relative; /* Ensure proper positioning */
     top: 0;
     left: 0;
+    overflow: hidden; /* Ensure content doesn't overflow */
+    z-index: 1;
+    background: url("https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg") no-repeat center center/cover;
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.login-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+
+form h1{
+    color: white;;
+}
+
+.login-form{
+    width: 100%;
+    height: 500px;
+    max-width: 320px;
+    position: absolute;
+    padding: 28px 68px;
+    border-radius: 5px;
+    background-color: rgba(4,5,7,1);
+    opacity: 0.7;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 3;
+}
+
+.login-form-signin{
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.login-form input, button{
+    padding: 15px 12px;
+    border-radius: 5px;
+}
+
+.login-form button{
+    background-color: rgb(229,9,20,1);
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.login-form-signup span{
+    color: white;
+    font-size: medium;
+}
+
+.login-form-signup a{
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-form-signup a:hover{
+    text-decoration: underline;
 }
