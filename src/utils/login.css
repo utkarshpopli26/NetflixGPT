@@ -50,6 +50,8 @@ form h1{
 .login-form input, button{
     padding: 15px 12px;
     border-radius: 5px;
+    background-color: rgba(128,128,128,0.4);
+    color: white;
 }
 
 .login-form button{
@@ -65,13 +67,14 @@ form h1{
     font-size: medium;
 }
 
-.login-form-signup a{
+.login-form-signup b{
     color: white;
     font-size: medium;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.login-form-signup a:hover{
+.login-form-signup b:hover{
     text-decoration: underline;
 }
