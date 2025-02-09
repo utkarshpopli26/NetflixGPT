@@ -1,11 +1,14 @@
-import Header from "./header";
+
 import Login from "./login";
+import '../utils/common.css';
 
 const Body = () => {
     return (
-        <div>
-            <Header/>
-            <Login/>
+        <div >
+            <div>
+                <Login/>
+            </div>
+            
         </div>
     );
 }
