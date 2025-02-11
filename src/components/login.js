@@ -1,7 +1,9 @@
-import '../utils/login.css';
+import '../utils/styleSheets/login.css';
 import Header from "./header";
 import { useRef, useState } from 'react';
 import { checkValidData } from '../utils/validate';
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../utils/firebase';
 
 
 const Login = () => {
@@ -17,8 +19,43 @@ const Login = () => {
 
     const HandleSubmit = () => {
         //validate form
-        const message = checkValidData(email.current.value, password.current.value);
+        const currentEmail = email.current.value;
+        const currentPassword = password.current.value;
+
+        const message = checkValidData(currentEmail, currentPassword);
         setErrorMessage(message);
+
+        if(message) return;
+
+        //sign in or sign up
+        
+        if(!isSignIn){
+            
+            createUserWithEmailAndPassword(auth, currentEmail, currentPassword)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setErrorMessage(errorMessage);
+            });
+        }
+        else{
+
+            signInWithEmailAndPassword(auth, currentEmail, currentPassword)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              console.log("signed in");
+            })
+            .catch((error) => {
+              const errorMessage = error.message;
+              setErrorMessage(errorMessage);
+            });
+
+        }
     }
 
     return (

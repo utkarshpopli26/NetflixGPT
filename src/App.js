@@ -3,6 +3,10 @@ import './App.css';
 import Body from './components/body';
 import Browse from './components/browse';
 import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+
+
 
 function App() {
 
@@ -18,9 +22,11 @@ function App() {
   ]);
 
   return (
+    <Provider store={appStore}>
     <RouterProvider router={appRouter}>
       <Body/>
     </RouterProvider>
+    </Provider>
   );
 }
 
