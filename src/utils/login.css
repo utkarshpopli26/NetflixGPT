@@ -6,7 +6,9 @@
     left: 0;
     overflow: hidden; /* Ensure content doesn't overflow */
     z-index: 1;
-    background: url("https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg") no-repeat center center/cover;
+    background: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), /* Apply gradient */
+        url("https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg") no-repeat center center/cover; /* Background image */
     display: flex; /* Use Flexbox */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
@@ -23,55 +25,55 @@
     z-index: 2;
 }
 
-form h1{
-    color: white;;
+form h1 {
+    color: white;
 }
 
-.login-form{
+.login-form {
     width: 100%;
     height: 500px;
     max-width: 320px;
     position: absolute;
     padding: 28px 68px;
     border-radius: 5px;
-    background-color: rgba(4,5,7,1);
-    opacity: 0.7;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    z-index: 3;
+    background-color: rgba(4, 5, 7, 0.7); /* Adjust the opacity */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 3; /* Ensure it is above the gradient */
 }
 
-.login-form input::placeholder {
-    color: white; /* Make placeholder text white */
-}
-
-.login-form-signin{
+.login-form-signin {
     display: flex;
     height: 80%;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.login-form input, button{
+.login-form input, button {
     padding: 15px 12px;
     border-radius: 5px;
-    background-color: rgba(128,128,128,0.4);
+    background-color: rgba(128, 128, 128, 0.4);
     color: white;
 }
 
-.login-form button{
-    background-color: rgb(229,9,20,1);
+.login-form input::placeholder {
+    color: white; /* Make placeholder text white */
+}
+
+.login-form button {
+    background-color: rgb(229, 9, 20, 1);
     color: white;
     font-size: medium;
     font-weight: bold;
     border-radius: 6px;
+    border: none;
 }
 
-.login-form-signup span{
+.login-form-signup span {
     color: white;
     font-size: medium;
 }
 
-.login-form-signup b{
+.login-form-signup b {
     color: white;
     font-size: medium;
     font-weight: bold;
@@ -79,12 +81,12 @@ form h1{
     cursor: pointer;
 }
 
-.login-form-signup b:hover{
+.login-form-signup b:hover {
     text-decoration: underline;
 }
 
-#error{
-    color: rgb(229,9,20,1);
+#error {
+    color: rgb(229, 9, 20, 1);
     font-size: medium;
     font-weight: bold;
 }
