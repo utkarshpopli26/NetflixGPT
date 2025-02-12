@@ -1,0 +1,16 @@
+.browse-container {
+    display: flex;
+    justify-content:space-between;
+}
+
+.sign-out-button {
+    font-weight: bold;
+    background-color: rgb(229, 9, 20);
+    color: white;
+    border: none;
+    margin: 45px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 3;
+}

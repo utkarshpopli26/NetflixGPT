@@ -2,16 +2,37 @@ import '../utils/styleSheets/login.css';
 import Header from "./header";
 import { useRef, useState } from 'react';
 import { checkValidData } from '../utils/validate';
-import {signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
 import { auth } from '../utils/firebase';
-
+import { useNavigate } from 'react-router-dom';
+import { addUser, removeUser } from "../utils/slices/userSlice";
+import { useEffect } from 'react';
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
 
     const email = useRef(null);
     const password = useRef(null);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [ErrorMessage, setErrorMessage] = useState(null); 
     const [isSignIn, setIsSignIn] = useState(true);
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            // User is signed in
+            const {uid,email,displayName} = user;
+            dispatch(addUser({uid: uid, email: email, displayName: displayName}));
+            navigate('/browse');
+          } else {
+            // User is signed out
+            dispatch(removeUser());
+            navigate('/');
+          }
+        });
+      }, [navigate, dispatch]);
 
     const ToogleForm = () => {
         setIsSignIn(!isSignIn);
@@ -34,8 +55,8 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, currentEmail, currentPassword)
             .then((userCredential) => {
                 // Signed up 
-                const user = userCredential.user;
-                console.log(user);
+                // const user = userCredential.user;
+                navigate('/browse');
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -47,8 +68,8 @@ const Login = () => {
             signInWithEmailAndPassword(auth, currentEmail, currentPassword)
             .then((userCredential) => {
               // Signed in 
-              const user = userCredential.user;
-              console.log("signed in");
+            //   const user = userCredential.user;
+              navigate('/browse');
             })
             .catch((error) => {
               const errorMessage = error.message;

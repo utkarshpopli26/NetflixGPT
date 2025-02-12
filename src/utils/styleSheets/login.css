@@ -61,6 +61,7 @@ form h1 {
 
 .login-form button {
     background-color: rgb(229, 9, 20, 1);
+    width: 100%;
     color: white;
     font-size: medium;
     font-weight: bold;
