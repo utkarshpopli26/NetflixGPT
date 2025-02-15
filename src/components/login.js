@@ -2,37 +2,19 @@ import '../utils/styleSheets/login.css';
 import Header from "./header";
 import { useRef, useState } from 'react';
 import { checkValidData } from '../utils/validate';
-import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
-import { addUser, removeUser } from "../utils/slices/userSlice";
-import { useEffect } from 'react';
-import { onAuthStateChanged } from "firebase/auth";
+import { addUser } from "../utils/slices/userSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
 
     const email = useRef(null);
     const password = useRef(null);
-    const navigate = useNavigate();
+    const fullName = useRef(null);
     const dispatch = useDispatch();
     const [ErrorMessage, setErrorMessage] = useState(null); 
     const [isSignIn, setIsSignIn] = useState(true);
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            // User is signed in
-            const {uid,email,displayName} = user;
-            dispatch(addUser({uid: uid, email: email, displayName: displayName}));
-            navigate('/browse');
-          } else {
-            // User is signed out
-            dispatch(removeUser());
-            navigate('/');
-          }
-        });
-      }, [navigate, dispatch]);
 
     const ToogleForm = () => {
         setIsSignIn(!isSignIn);
@@ -42,64 +24,60 @@ const Login = () => {
         //validate form
         const currentEmail = email.current.value;
         const currentPassword = password.current.value;
+        const currentFullName = fullName.current ? fullName.current.value : null;
 
         const message = checkValidData(currentEmail, currentPassword);
         setErrorMessage(message);
 
-        if(message) return;
+        if (message) return;
 
         //sign in or sign up
-        
-        if(!isSignIn){
-            
+        if (!isSignIn) {
             createUserWithEmailAndPassword(auth, currentEmail, currentPassword)
-            .then((userCredential) => {
-                // Signed up 
-                // const user = userCredential.user;
-                navigate('/browse');
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                setErrorMessage(errorMessage);
-            });
-        }
-        else{
-
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    dispatch(addUser({ uid: user.uid, email: user.email, displayName: currentFullName }));
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    setErrorMessage(errorMessage);
+                });
+        } else {
             signInWithEmailAndPassword(auth, currentEmail, currentPassword)
-            .then((userCredential) => {
-              // Signed in 
-            //   const user = userCredential.user;
-              navigate('/browse');
-            })
-            .catch((error) => {
-              const errorMessage = error.message;
-              setErrorMessage(errorMessage);
-            });
-
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    dispatch(addUser({ uid: user.uid, email: user.email, displayName: user.displayName }));
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    setErrorMessage(errorMessage);
+                });
         }
     }
 
     return (
         <div>
-            <Header/>
+            <Header />
             <div className="login-container">
                 <img src="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg" alt="background-img"></img>
                 <form onSubmit={(e) => e.preventDefault()} className="login-form">
-                <div className='login-form-signin'>
-                    <h1>{isSignIn ? "Sign In" : "Sign Up"}</h1>
-                    {!isSignIn && <input type='text' placeholder='Full Name'></input>}
-                    <input ref={email} type="email" placeholder="Email"></input>
-                    <input ref={password} type="password" placeholder="Password"></input>
-                    <p id="error">{ErrorMessage}</p>
-                    <button onClick={HandleSubmit}>{isSignIn ? "Sign In" : "Sign Up"}</button>
-                </div>
-                {isSignIn ? 
-                    <div className="login-form-signup">
-                        <span>New to Netflix? <b onClick={ToogleForm}>Sign up now</b></span>
-                    </div> : 
-                    <div className="login-form-signup"><span>Already a user? <b onClick={ToogleForm}>Sign in now</b></span></div>
-                }
-            </form>
+                    <div className='login-form-signin'>
+                        <h1>{isSignIn ? "Sign In" : "Sign Up"}</h1>
+                        {!isSignIn && <input ref={fullName} type='text' placeholder='Full Name'></input>}
+                        <input ref={email} type="email" placeholder="Email"></input>
+                        <input ref={password} type="password" placeholder="Password"></input>
+                        <p id="error">{ErrorMessage}</p>
+                        <button onClick={HandleSubmit}>{isSignIn ? "Sign In" : "Sign Up"}</button>
+                    </div>
+                    {isSignIn ? 
+                        <div className="login-form-signup">
+                            <span>New to Netflix? <b onClick={ToogleForm}>Sign up now</b></span>
+                        </div> : 
+                        <div className="login-form-signup"><span>Already a user? <b onClick={ToogleForm}>Sign in now</b></span></div>
+                    }
+                </form>
             </div>
         </div>
     );
