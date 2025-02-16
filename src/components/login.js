@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "fire
 import { auth } from '../utils/firebase';
 import { addUser } from "../utils/slices/userSlice";
 import { useDispatch } from "react-redux";
+import { BACKGROUND } from '../utils/constants';
 
 const Login = () => {
 
@@ -61,7 +62,7 @@ const Login = () => {
         <div>
             <Header />
             <div className="login-container">
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg" alt="background-img"></img>
+                <img src={BACKGROUND} alt="background-img"></img>
                 <form onSubmit={(e) => e.preventDefault()} className="login-form">
                     <div className='login-form-signin'>
                         <h1>{isSignIn ? "Sign In" : "Sign Up"}</h1>
