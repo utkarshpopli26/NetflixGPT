@@ -1,16 +1,26 @@
 .browse-container {
-    display: flex;
-    justify-content:space-between;
+    background-color: #1a1a1a; 
+    color: white; 
+    min-height: 100vh;
 }
 
-.sign-out-button {
-    font-weight: bold;
-    background-color: rgb(229, 9, 20);
-    color: white;
-    border: none;
-    margin: 45px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+.browse-header{
+    display: flex;
+    justify-content:space-between;
+    height: 100px;
+}
+
+.sign-out-div{
+    margin-top: 40px;
+    margin-right: 5%;
     z-index: 3;
+}
+
+.sign-out-btn{
+    font-weight: bold;
+    color: white;
+    background-color: rgb(229, 9, 20);
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
 }

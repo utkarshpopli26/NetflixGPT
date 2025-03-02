@@ -1,0 +1,33 @@
+.title-container{
+    margin-left: 7%;
+    margin-top: 30%;
+    z-index: 10;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+p{
+    width: 35%;
+    font-size: large;
+}
+
+.title-buttons{
+    width: 10%;
+    padding: 15px 5px;
+    font-size: large;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: rgba(109, 109, 110, 0.7);
+}
+
+.play{
+    color: black;
+    background-color: white;
+}
+
+.play:hover{
+    background-color: lightgrey;
+}

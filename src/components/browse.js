@@ -1,12 +1,18 @@
 import Header from "./header";
 import { signOut } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useDispatch } from "react-redux";
 import { removeUser } from "../utils/slices/userSlice";
 import '../utils/styleSheets/browse.css';
+import { useDispatch } from "react-redux";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
+
     const dispatch = useDispatch();
+
+    useNowPlayingMovies();
 
     const HandleLogout = () => {
         signOut(auth).then(() => {
@@ -14,14 +20,20 @@ const Browse = () => {
           }).catch((error) => {
             // An error happened.
           });
-    }    
+    }   
 
     return (
         <div className="browse-container">
-            <div>
-            <Header/>
+            <div className="browse-header">
+                <div>
+                    <Header/>
+                </div>
+                <div className="sign-out-div">
+                    <button onClick={HandleLogout} className="sign-out-btn">Sign Out</button>
+                </div>
             </div>
-            <button onClick={HandleLogout} className="sign-out-button">Sign Out</button>
+            <MainContainer/>
+            <SecondaryContainer/>
         </div>
     );
 }

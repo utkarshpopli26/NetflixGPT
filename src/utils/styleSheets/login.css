@@ -67,6 +67,7 @@ form h1 {
     font-weight: bold;
     border-radius: 6px;
     border: none;
+    cursor: pointer;
 }
 
 .login-form-signup span {
