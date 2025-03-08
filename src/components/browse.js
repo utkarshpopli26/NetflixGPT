@@ -4,7 +4,7 @@ import { auth } from '../utils/firebase';
 import { removeUser } from "../utils/slices/userSlice";
 import '../utils/styleSheets/browse.css';
 import { useDispatch } from "react-redux";
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import useMovies from "../hooks/useMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
@@ -12,7 +12,7 @@ const Browse = () => {
 
     const dispatch = useDispatch();
 
-    useNowPlayingMovies();
+    useMovies();
 
     const HandleLogout = () => {
         signOut(auth).then(() => {

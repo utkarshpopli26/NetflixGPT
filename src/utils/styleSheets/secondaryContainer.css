@@ -1,0 +1,5 @@
+.secondary-container-child {
+    position: relative;
+    margin-top: -10%; /* Adjust this value to overlap with VideoBackground */
+    z-index: 5; /* Ensure it is above the VideoBackground */
+}
