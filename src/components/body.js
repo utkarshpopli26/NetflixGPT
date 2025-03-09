@@ -8,7 +8,6 @@ const Body = () => {
             <div>
                 <Login/>
             </div>
-            
         </div>
     );
 }

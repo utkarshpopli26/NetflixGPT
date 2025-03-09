@@ -16,11 +16,42 @@
     z-index: 3;
 }
 
-.sign-out-btn{
+.sign-out-btn, .gpt-btn{
     font-weight: bold;
     color: white;
     background-color: rgb(229, 9, 20);
     cursor: pointer;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 22px;
+}
+
+.gpt-btn{
+    margin-right: 10px;
+}
+
+.gpt-search-page{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+    background: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)),
+        url("https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg") no-repeat center center/cover; /* Background image */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.gpt-search-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
