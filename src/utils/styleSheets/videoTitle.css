@@ -3,9 +3,9 @@
     margin-top: 30%;
     z-index: 10;
     position: absolute;
-    width: 86%; /* Adjust width to fit within the screen */
-    height: auto; /* Adjust height to fit content */
-    overflow: hidden; /* Prevent overflow */
+    width: 86%; 
+    height: auto;
+    overflow: hidden;
 }
 
 h1{

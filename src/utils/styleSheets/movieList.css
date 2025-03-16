@@ -2,8 +2,9 @@
     display: flex;
     overflow-x: auto;
     gap: 20px;
-    margin: 0px 20px;
+    margin: 20px;
     padding: 10px 0;
+    white-space: nowrap;
 }
 
 .movie-list::-webkit-scrollbar {
@@ -21,4 +22,11 @@
 
 h2 {
     margin-left: 20px;
+    color: white;
+}
+
+.gpt-movie-suggestion-container {
+    padding: 20px;
+    max-height: 50vh;
+    overflow-y: auto;
 }

@@ -39,10 +39,7 @@
     z-index: 1;
     background: 
         linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)),
-        url("https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg") no-repeat center center/cover; /* Background image */
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+        url("https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg") no-repeat center center/cover;
 }
 
 .gpt-search-page::before {
@@ -54,4 +51,31 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 2;
+}
+
+.gpt-search-suggestion {
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    color: white;
+    text-align: center;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    margin-right: 10px;
+    border: 2px solid white;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }

@@ -36,7 +36,7 @@ const Browse = () => {
                     <Header/>
                 </div>
                 <div className="sign-out-div">
-                    <button onClick={toggleView} className="gpt-btn">GPT Search</button>
+                    <button onClick={toggleView} className="gpt-btn">{IsGptPage ? "Home" : "GPT Search"}</button>
                     <button onClick={HandleLogout} className="sign-out-btn">Sign Out</button>
                 </div>
             </div>
