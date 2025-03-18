@@ -8,7 +8,6 @@ const GptMoviesSuggestion = () => {
 
     return (
         <div className="gpt-movie-suggestion-container">
-            <h1>Movies Suggestion</h1>
             <div>
                 {list_of_movies && list_of_movies.map((array, index) => (
                     <MovieList key={index} title={movies_names[index]} movies={array} />

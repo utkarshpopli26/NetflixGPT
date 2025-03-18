@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { addGptMovies } from "../utils/slices/gptSlice";
 import { useDispatch } from "react-redux";
 
-const GptSearchBar = () => {
+const GptSearchBar = ({setLoading}) => {
 
     const searchText = useRef("");
     const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const GptSearchBar = () => {
     }
 
     const submitSearch = async () => {
+        setLoading(true);
         const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query : " + searchText.current.value + ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
         const gptResults = await openai.chat.completions.create({
             messages: [{ role: "user", content: gptQuery }],
@@ -26,6 +27,7 @@ const GptSearchBar = () => {
         const list_of_movies = await Promise.all(movie_names.map((movie) => searchMovies(movie)));
 
         dispatch(addGptMovies({movie_names: movie_names, final_list_of_movies: list_of_movies}));
+        setLoading(false);
     }   
 
     return (
