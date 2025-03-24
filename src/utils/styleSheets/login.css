@@ -1,5 +1,5 @@
 .login-container {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     position: relative;
     top: 0;
@@ -91,4 +91,12 @@ form h1 {
     color: rgb(229, 9, 20, 1);
     font-size: medium;
     font-weight: bold;
+}
+
+
+@media (max-width: 600px) {
+    .login-form{
+        max-width: 200px;
+        height: 400px;
+    }
 }

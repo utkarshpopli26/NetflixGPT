@@ -1,4 +1,5 @@
 import { IMG_CDN_URL } from "../utils/constants";
+import '../utils/styleSheets/movieList.css';
 
 const MovieCard = ({posterPath}) => {
     if(!posterPath)return ;

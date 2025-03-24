@@ -8,7 +8,7 @@ const VideoTitle = ({original_title,overview}) => {
             <p>{overview}</p>
             <div>
                 <button className='title-buttons play'>Play</button>
-                <button className='title-buttons'>More Info</button>
+                <button className='title-buttons info'>More Info</button>
             </div>
         </div>
     );

@@ -27,6 +27,20 @@ h2 {
 
 .gpt-movie-suggestion-container {
     padding: 20px;
+    margin-top: 10%;
     max-height: 50vh;
     overflow-y: auto;
+}
+
+
+@media (max-width: 600px) {
+    img{
+        width: 150px;
+    }
+}
+
+@media (min-width: 600px) {
+    .gpt-movie-suggestion-container {
+        margin-top: 10%;
+    }
 }
